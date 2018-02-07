@@ -2,6 +2,7 @@
 
 
 ##messagesテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |body|text|
@@ -15,6 +16,7 @@
 
 
 ##usersテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false|
@@ -28,6 +30,7 @@
 
 
 ##groupsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |name|string|null: false, unique: true|
@@ -39,6 +42,7 @@
 
 
 ##users_groupsテーブル
+
 |Column|Type|Options|
 |------|----|-------|
 |group_id|integer|refernces,foreign_key: true|
