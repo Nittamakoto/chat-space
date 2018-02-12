@@ -3,14 +3,14 @@
   .side-bar
     .header
       %h3.header__name
-        name
+        = current_user.name
       %ul.header__lists
         %li.list
           %a{href: "/groups/new"}
             %i.fa.fa-pencil-square-o.icon
         %li.list
-          %a{href: "/users//edit"}
-            %i.fa.fa-cog.icon
+          = link_to edit_user_path do
+            = fa_icon 'cog', class: 'icon'
     .groups
       = render partial: "groups"
   .chat
