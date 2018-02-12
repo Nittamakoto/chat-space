@@ -1,0 +1,33 @@
+%p.notification チャットグループが作成されました。
+.wrapper
+  .side-bar
+    .header
+      %h3.header__name
+        name
+      %ul.header__lists
+        %li.list
+          %a{href: "/groups/new"}
+            %i.fa.fa-pencil-square-o.icon
+        %li.list
+          %a{href: "/users//edit"}
+            %i.fa.fa-cog.icon
+    .groups
+      = render partial: "groups"
+  .chat
+    .header
+      = render partial: "left-header"
+      .right-header
+        %a.right-header__button{href:"/groups//edit"} Edit
+    .messages
+      = render partial: "message"
+    .form
+      %form#new_message.js-form{"accept-charset": "UTF-8", action: "/groups//messages", enctype: "multipart/form-data", method: "post"}
+        %input{name: "utf8", type: "hidden", value: "✓"}/
+        %input{name: "authenticity_token", type: "hidden", value: ""}/
+        %input#message_content.form__message.js-content{name: "message[content]", placeholder: "type a message", type: "text"}/
+        .form__mask
+          %label.form__mask__image{for: "message_image"}
+            %i.fa.fa-picture-o.icon
+            %input#message_image.hidden.js-file{name: "message[image]", type: "file"}/
+        %input.form__submit{"data-disable-with" => "Send", name: "commit", type: "submit", value: "Send"}/
+
