@@ -1,0 +1,40 @@
+%p.layout-notice チャットグループが作成されました。
+.layout-notification
+  .chat
+    .chat-side
+      .chat-user.clearfix
+        %h5 sample
+        .chat-user__actions
+          %a.chat-user__action{:href => "/chat_groups/new"}
+            %i.fa.fa-pencil-square-o
+          %a.chat-user__action{:href => "/users/edit"}
+            %i.fa.fa-cog
+      %ul.chat-groups
+        %li.chat-group
+          %a.chat-group__link{:href => "/chat_groups/19672/messages"}
+            %p.chat-group__name sample
+            %p.chat-group__message
+              un known
+    .chat-main
+      .chat-header.clearfix
+        .chat-header--left
+          %h2 sample
+          %p.chat-header__users
+            Members:
+            %span.chat-header__user un known
+        .chat-header--right
+          %a.chat-header__edit-btn{:href => "/chat_groups/19672/edit"} Edit
+      .chat-body
+        %ul.chat-messages
+      .chat-footer
+        %form#new_message.new_message{"accept-charset" => "UTF-8", :action => "/chat_groups/19672/messages", :enctype => "multipart/form-data", :method => "post"}
+          %input{:name => "utf8", :type => "hidden", :value => "✓"}/
+          %input{:name => "authenticity_token", :type => "hidden", :value => "6WcsN+KFDz8RivI0Q9+Ot+qkF3j35pnsCXzycEv8PscgC+2LWNatJ21oa6RHKcab8dwth6l7xOadLZlvJETNNw=="}/
+          .chat-footer__body
+            %textarea#message_body{:name => "message[body]", :placeholder => "type a message", :row => "1"}
+              :preserve
+
+            %label.chat-footer__file
+              %input#message_image{:name => "message[image]", :type => "file"}/
+              %i.fa.fa-image
+          %input{"data-disable-with" => "Send", :name => "commit", :type => "submit", :value => "Send"}/
