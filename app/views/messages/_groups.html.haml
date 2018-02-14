@@ -1,6 +1,8 @@
 .group
-  %a{href: "/groups/9732/messages"}
-    .group__name
-      team_D
-    .group__message
-      Hello!
+  - current_user.groups.each do |group|
+    = link_to group_messages_path(group) do
+      .group__name
+        = group.name
+      .group__message
+        メッセージはまだありません。
+
