@@ -5,10 +5,10 @@
         = current_user.name
       %ul.header__lists
         %li.list
-          = link_to new_groups_path do
+          = link_to new_group_path do
             = fa_icon 'pencil-square-o', class: 'icon'
         %li.list
-          = link_to edit_user_path do
+          = link_to edit_user_path(current_user.id) do
             = fa_icon 'cog', class: 'icon'
     .groups
       = render partial: "groups"
@@ -29,4 +29,3 @@
             %i.fa.fa-picture-o.icon
             %input#message_image.hidden.js-file{name: "message[image]", type: "file"}/
         %input.form__submit{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
-
