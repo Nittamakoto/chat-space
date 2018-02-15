@@ -20,12 +20,10 @@
     .messages
       = render partial: "message"
     .form
-      %form#new_message.js-form{"accept-charset": "UTF-8", action: "/groups//messages", enctype: "multipart/form-data", method: "post"}
-        %input{name: "utf8", type: "hidden", value: "✓"}/
-        %input{name: "authenticity_token", type: "hidden", value: ""}/
-        %input#message_content.form__message.js-content{name: "message[content]", placeholder: "type a message", type: "text"}/
+      = form_for [@group, @message] do |f|
+        = f.text_field :content, class: 'form__message', placeholder: 'type a message'
         .form__mask
-          %label.form__mask__image{for: "message_image"}
-            %i.fa.fa-picture-o.icon
-            %input#message_image.hidden.js-file{name: "message[image]", type: "file"}/
-        %input.form__submit{"data-disable-with": "Send", name: "commit", type: "submit", value: "Send"}/
+          = f.label :image, class: 'form__mask__image' do
+            = fa_icon 'picture-o', class: 'icon'
+            = f.file_field :image, class: 'hidden'
+        = f.submit 'Send', class: 'form__submit'
