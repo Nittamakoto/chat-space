@@ -18,7 +18,7 @@
       .right-header
         %a.right-header__button{href:"/groups//edit"} Edit
     .messages
-      = render partial: "message"
+      = render @messages
     .form
       = form_for [@group, @message] do |f|
         = f.text_field :content, class: 'form__message', placeholder: 'type a message'
