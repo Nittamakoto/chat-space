@@ -35,6 +35,7 @@ $(function() {
     })
   })
   function autoUpdate(){
+    if(window.location.href.match(/\/groups\/\d+\/messages/)){
     var message_id = $(".message").last().data("id");
     $.ajax({
       url: location.href,
@@ -49,8 +50,14 @@ $(function() {
       moveToBottom()
       })
     })
+    } else {
+      stop_autoUpdate();
+    }
   }
-  setInterval(autoUpdate, 2000);
+  function stop_autoUpdate(){
+    clearInterval(interval);
+  }
+  var interval = setInterval(autoUpdate, 2000);
 
   function moveToBottom() {
     $('.messages').animate({ scrollTop: $('.messages')[0].scrollHeight });
